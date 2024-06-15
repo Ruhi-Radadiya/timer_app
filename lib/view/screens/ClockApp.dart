@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:math';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ClockApp extends StatefulWidget {
@@ -80,19 +81,12 @@ class _ClockAppState extends State<ClockApp> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  "Select Your Watch",
-                  style: TextStyle(
-                      fontWeight: FontWeight.w800,
-                      fontSize: textScaler.scale(30),
-                      color: Colors.white),
-                ),
-                Text(
-                  "Save Your Each Seconds",
-                  style: TextStyle(
-                      fontWeight: FontWeight.w400,
-                      fontSize: textScaler.scale(15),
-                      color: Colors.white),
+                UserAccountsDrawerHeader(
+                  accountName: Text("Ruhi"),
+                  accountEmail: Text("ruhiradadiya78@gmail.com"),
+                  currentAccountPicture: CircleAvatar(
+                    backgroundImage: AssetImage("assets/image/img.png"),
+                  ),
                 ),
                 SizedBox(
                   height: h * 0.08,
@@ -101,7 +95,7 @@ class _ClockAppState extends State<ClockApp> {
                   leading: Text(
                     "01",
                     style: TextStyle(
-                        color: Colors.white54, fontSize: textScaler.scale(20)),
+                        color: Colors.white54, fontSize: textScaler.scale(18)),
                   ),
                   subtitle: Text(
                     "Your Digital Time",
@@ -110,7 +104,7 @@ class _ClockAppState extends State<ClockApp> {
                   title: Text(
                     "Digital Watch",
                     style: TextStyle(
-                        fontSize: textScaler.scale(20),
+                        fontSize: textScaler.scale(18),
                         fontWeight: FontWeight.w500,
                         color: Colors.white54),
                   ),
@@ -128,7 +122,7 @@ class _ClockAppState extends State<ClockApp> {
                   leading: Text(
                     "02",
                     style: TextStyle(
-                        color: Colors.white54, fontSize: textScaler.scale(20)),
+                        color: Colors.white54, fontSize: textScaler.scale(18)),
                   ),
                   subtitle: Text(
                     "Your Clock ",
@@ -137,7 +131,7 @@ class _ClockAppState extends State<ClockApp> {
                   title: Text(
                     "Analog Watch",
                     style: TextStyle(
-                        fontSize: textScaler.scale(20),
+                        fontSize: textScaler.scale(18),
                         fontWeight: FontWeight.w500,
                         color: Colors.white54),
                   ),
@@ -155,7 +149,7 @@ class _ClockAppState extends State<ClockApp> {
                   leading: Text(
                     "03",
                     style: TextStyle(
-                        color: Colors.white54, fontSize: textScaler.scale(20)),
+                        color: Colors.white54, fontSize: textScaler.scale(18)),
                   ),
                   subtitle: Text(
                     "Your Strap Watch",
@@ -164,7 +158,7 @@ class _ClockAppState extends State<ClockApp> {
                   title: Text(
                     "Strap Watch",
                     style: TextStyle(
-                        fontSize: textScaler.scale(20),
+                        fontSize: textScaler.scale(18),
                         fontWeight: FontWeight.w500,
                         color: Colors.white54),
                   ),
@@ -182,7 +176,7 @@ class _ClockAppState extends State<ClockApp> {
                   leading: Text(
                     "04",
                     style: TextStyle(
-                        color: Colors.white54, fontSize: textScaler.scale(20)),
+                        color: Colors.white54, fontSize: textScaler.scale(18)),
                   ),
                   subtitle: Text(
                     "Your Stop Watch",
@@ -191,7 +185,7 @@ class _ClockAppState extends State<ClockApp> {
                   title: Text(
                     "Stop Watch",
                     style: TextStyle(
-                        fontSize: textScaler.scale(20),
+                        fontSize: textScaler.scale(18),
                         fontWeight: FontWeight.w500,
                         color: Colors.white54),
                   ),
@@ -331,6 +325,13 @@ class _ClockAppState extends State<ClockApp> {
                                   SizedBox(
                                     width: w * 0.02,
                                   ),
+                                  Text(
+                                    "${(hour < 12) ? 'AM' : 'PM'}",
+                                    style: TextStyle(
+                                        fontSize: textScaler.scale(15),
+                                        fontWeight: FontWeight.w400,
+                                        color: Colors.white),
+                                  ),
                                 ],
                               ),
                             ),
@@ -426,56 +427,57 @@ class _ClockAppState extends State<ClockApp> {
                           ),
                         ),
                         Visibility(
-                            visible: isStrap,
-                            child: Stack(
-                              alignment: Alignment.center,
-                              children: [
-                                Transform.scale(
-                                  scale: 9,
-                                  child: CircularProgressIndicator(
-                                    strokeWidth: 1,
-                                    value: second / 60,
-                                    color: Colors.pink.shade300,
+                          visible: isStrap,
+                          child: Stack(
+                            alignment: Alignment.center,
+                            children: [
+                              Transform.scale(
+                                scale: 9,
+                                child: CircularProgressIndicator(
+                                  strokeWidth: 1,
+                                  value: second / 60,
+                                  color: Colors.pink.shade300,
+                                ),
+                              ),
+                              Transform.scale(
+                                scale: 8,
+                                child: CircularProgressIndicator(
+                                  strokeWidth: 0.8,
+                                  value: (minute + (second / 60)) / 60,
+                                  color: Colors.yellow.shade300,
+                                ),
+                              ),
+                              Transform.scale(
+                                scale: 7,
+                                child: CircularProgressIndicator(
+                                  strokeWidth: 0.6,
+                                  value: (hour % 12 + (minute / 60)) / 12,
+                                  color: Colors.blue.shade300,
+                                ),
+                              ),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                children: [
+                                  Text(
+                                    "${(hour).toString().padLeft(2, '0')}:${(minute).toString().padLeft(2, '0')}:${(second).toString().padLeft(2, '0')}",
+                                    style: TextStyle(
+                                        fontSize: textScaler.scale(42),
+                                        fontWeight: FontWeight.w800,
+                                        color: Colors.white),
                                   ),
-                                ),
-                                Transform.scale(
-                                  scale: 8,
-                                  child: CircularProgressIndicator(
-                                    strokeWidth: 0.8,
-                                    value: (minute + (second / 60)) / 60,
-                                    color: Colors.yellow.shade300,
+                                  Text(
+                                    "${(hour < 12) ? 'AM' : 'PM'}",
+                                    style: TextStyle(
+                                        fontSize: textScaler.scale(15),
+                                        fontWeight: FontWeight.w400,
+                                        color: Colors.white),
                                   ),
-                                ),
-                                Transform.scale(
-                                  scale: 7,
-                                  child: CircularProgressIndicator(
-                                    strokeWidth: 0.6,
-                                    value: (hour % 12 + (minute / 60)) / 12,
-                                    color: Colors.blue.shade300,
-                                  ),
-                                ),
-                                Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  children: [
-                                    Text(
-                                      "${(hour).toString().padLeft(2, '0')}:${(minute).toString().padLeft(2, '0')}:${(second).toString().padLeft(2, '0')}",
-                                      style: TextStyle(
-                                          fontSize: textScaler.scale(42),
-                                          fontWeight: FontWeight.w800,
-                                          color: Colors.white),
-                                    ),
-                                    Text(
-                                      "${(hour < 12) ? 'AM' : 'PM'}",
-                                      style: TextStyle(
-                                          fontSize: textScaler.scale(15),
-                                          fontWeight: FontWeight.w400,
-                                          color: Colors.white),
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            )),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
                         Visibility(
                           visible: isStop,
                           child: Column(
@@ -557,6 +559,19 @@ class _ClockAppState extends State<ClockApp> {
                                 ),
                               ),
                             ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(bottom: 80.0),
+                          child: Align(
+                            alignment: Alignment.bottomCenter,
+                            child: Text(
+                              "~Save your Each Seconds",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: textScaler.scale(26),
+                                  color: Colors.white),
+                            ),
                           ),
                         ),
                       ],
