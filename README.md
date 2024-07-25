@@ -10,6 +10,21 @@
 * **Offline Functionality**: Full functionality without the need for an internet connection, ensuring reliability anytime, anywhere.
 
 
+## Question and answer:
+### **1.What is  Asynchronous Programming?** ###
+* #### Asynchronous programming is a programming paradigm that allows tasks or operations to run independently and concurrently, without waiting for each other to complete before moving on to the next task. ####
+### **2.What is Future Class?** ###
+* #### Future class represents the result of an asynchronous operation, such as fetching data from a web API, reading from a file, or performing a computation. ####  
+### **3.What is Duration class & Future.delayed() constructor with Example?** ###
+* #### Future.delayed() constructor creates a future that runs a computation after a specified delay. The future is completed with the computation's result once the duration passes. ####
+### **4.What is the Use of the async & await keyword?** ###
+* #### The async and await keywords in Flutter are used to simplify asynchronous programming.  ####
+### **5.What is Recursion ? With Example.** ###
+* #### Recursion in Flutter is a process where a function or component calls itself repeatedly until a base condition is reached. ####
+### **6.What is Timer class with example ?** ###
+* #### The Flutter Timer class is a tool for adding time-based features to apps. ####
+### **7.What is Timer.periodic and use with Example?** ###
+* #### Timer.periodic is a constructor in Flutter's dart:async library that creates a repeating timer that invokes a callback at a specified duration. ####
 
 ## 🕛 Clock Types
 
